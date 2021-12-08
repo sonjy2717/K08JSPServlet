@@ -20,11 +20,28 @@ dao.close();
 <head>
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
+<script>
+function deletePost() {
+	var confirmed = confirm("정말로 삭제하겠습니까?");
+	if (confirmed) {
+		var form = document.writeFrm;
+		form.method = "post"; //전송방식을 post로 설정
+		form.action = "DeleteProcess.jsp"; //전송할 URL
+		form.submit(); //폼값 전송
+	}
+}
+</script>
 </head>
 <body>
 <jsp:include page="../Common/Link.jsp" />
 <h2>회원제 게시판 - 상세 보기(View)</h2>
+
+<!-- 
+	상세보기 페이지는 작성폼은 아니나 삭제시 게시물의 일련번호를
+	post방식으로 전송해야 하므로 <form>태그를 사용하였다.
+ -->
 <form name="writeFrm">
+	<!-- 게시물의 일련번호 : 삭제시 사용할 예정 -->
 	<input type="hidden" name="num" value="<%= num %>" />
 	
     <table border="1" width="90%">
