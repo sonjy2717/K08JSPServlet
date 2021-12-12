@@ -22,7 +22,7 @@ if (searchWord != null) {
     param.put("searchWord", searchWord);//검색어
 }
 //board테이블에 저장된 게시물의 갯수 카운트
-int totalCount = dao.selectCount(param);   
+int totalCount = dao.selectCount(param);
 
 
 /*** 페이지 처리 start ***/
