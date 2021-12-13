@@ -128,7 +128,7 @@ else {
         <tr align="center">
             <td>
                 <%= BoardPage.pagingStr(totalCount, pageSize,
-                       blockPage, pageNum, request.getRequestURI()) %>  
+                    blockPage, pageNum, request.getRequestURI()) %>  
                 <!--  
                 request.getRequestURI() : request내장객체를 통해 현재 페이지에서
                 	HOST부분을 제외한 전체 경로명을 얻을 수 있다. 여기서 얻은
