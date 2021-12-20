@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import javax.servlet.ServletContext;
 
-public class JDBCConnect {
+public class JDBConnect {
 	
 	public Connection con;
 	public Statement stmt;
@@ -16,7 +16,7 @@ public class JDBCConnect {
 	public ResultSet rs;
 	
 	//기본 생성자
-	public JDBCConnect() {
+	public JDBConnect() {
 		try {
 			//오라클 드라이버 로드
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -34,7 +34,7 @@ public class JDBCConnect {
 	}
 	
 	//두 번째 생성자
-	public JDBCConnect(String driver, String url, String id, String pwd) {
+	public JDBConnect(String driver, String url, String id, String pwd) {
 		try {
 			//JDBC 드라이버 로드
 			Class.forName(driver);
@@ -49,7 +49,7 @@ public class JDBCConnect {
 	}
 	
 	//세 번째 생성자
-	public JDBCConnect(ServletContext application) {
+	public JDBConnect(ServletContext application) {
 		
 		//web.xml에 저장된 오라클 접속정보를 얻어온다.
 		String driver = application.getInitParameter("OracleDriver");

@@ -12,34 +12,43 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script>
 $(function() {
+	//jQuery UI의 데이트피커 선언. 한국에서 사용하는 날짜포맷으로 변경
 	$("#startCreateDt").datepicker();
 	$("#startCreateDt").datepicker("option", "dateFormat", "yy-mm-dd");
 	$("#endCreateDt").datepicker();
 	$("#endCreateDt").datepicker("option", "dateFormat", "yy-mm-dd");
 	
+	//문서가 로드될때 $.ajax()에서 사용할 기본적인 속성 선언
 	$.ajaxSetup({
 		url : "../Covid19DataRead.do",
 		type : "get",
 		contentType : "text/html;charset:utf-8;",
-		dataType : "xml",
+		dataType : "xml",//콜백데이터 타입
 	});
 	
 	$('#submitBtn').click(function() {
+		//날짜에 포함된 -(하이픈)을 replace()를 통해 제거
 		var scd = $('#startCreateDt').val().replace(/-/g, '');
 		var ecd = $('#endCreateDt').val().replace(/-/g, '');
-		
+		/*
+	    /-/g 와 같은 정규표현식을 사용하면 문자열 내의 모든 하이픈을 제거해준다. 
+	    정규표현식을 쓰지 않으면 앞에 있는 하이픈 하나만 제거된다. 
+	     */
+	     
+	    //여기에서 공공 데이터 API요청
 		$.ajax({
-			data : {
+			
+			data : { //파라미터
 				startCreateDt : scd,
 				endCreateDt : ecd
 			},
-			success : sucFuncJson,
+			success : sucFuncXml,
 			error : errFunc,
 		});
 	});
 });
 //요청에 성공한 경우의 콜백 메서드
-function sucFuncJson(d) {
+function sucFuncXml(d) {
 	var str = "";
 	var resultCode = $(d).find("response").find("header").find("resultCode");
 	var createDt = new Array();  	  //등록일시분초

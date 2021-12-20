@@ -2,7 +2,7 @@ package membership;
 
 import javax.servlet.ServletContext;
 
-import common.JDBCConnect;
+import common.JDBConnect;
 
 /*
 DAO(Data Access Object) : 실제 데이터베이스에 접근하여
@@ -10,7 +10,7 @@ DAO(Data Access Object) : 실제 데이터베이스에 접근하여
  */
 
 //DB 연결을 위한 클래스를 상속한다.
-public class MemberDAO extends JDBCConnect {
+public class MemberDAO extends JDBConnect {
 	
 	//인자가 4개인 부모의 생성자를 호출하여 연결한다.
 	public MemberDAO(String drv, String url, String id, String pw) {

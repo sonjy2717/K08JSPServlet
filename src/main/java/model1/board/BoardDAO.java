@@ -6,9 +6,9 @@ import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
-import common.JDBCConnect;
+import common.JDBConnect;
 
-public class BoardDAO extends JDBCConnect {
+public class BoardDAO extends JDBConnect {
 	
 	//부모의 인자생성자를 호출한다. 이때 application내장객체를 매개변수로 전달한다.
 	public BoardDAO(ServletContext application) {

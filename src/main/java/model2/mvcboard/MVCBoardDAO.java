@@ -21,6 +21,7 @@ public class MVCBoardDAO extends DBConnPool {
 			query += " WHERE " + map.get("searchField") + " "
 					+ " LIKE '%" + map.get("searchWord") + "%'";
 		}
+		
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
